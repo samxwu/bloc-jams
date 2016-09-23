@@ -30,6 +30,22 @@ var albumMarconi = {
      ]
  };
 
+// Add 3rd album 
+var albumJoker = {
+    title: 'Jokes On You',
+    artist: 'The Joker',
+    label: 'DC Comics',
+    year: '2016',
+    albumArtUrl: 'assets/images/album_covers/18.png',
+    songs: [
+        { title: 'Why So Serious?', duration: '2:01'},
+        { title: '#CakeFace', duration: '3:21'},
+        { title: "Gotham's Baddest", duration: '5:03'},
+        { title: "Batman, Don't Forget That Lozenge", duration: '4:21'},
+        { title: "Put A Smile On That Face", duration: '4:05'},
+    ]
+}
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -68,3 +84,21 @@ var setCurrentAlbum = function(album) {
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 };
+
+document.getElementsByClassName('album-cover-art')[0].addEventListener("click", function(){
+    var currTitle =  document.getElementsByClassName('album-view-title')[0].firstChild.nodeValue;
+    
+    switch (currTitle) {
+        case 'The Colors':
+            setCurrentAlbum(albumMarconi)
+            break;
+        
+        case 'The Telephone':
+            setCurrentAlbum(albumJoker)
+            break;
+        
+        case 'Jokes On You':
+            setCurrentAlbum(albumPicasso)
+            break;
+    }
+});
